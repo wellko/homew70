@@ -6,17 +6,38 @@ import {ContactState} from "../types";
 interface State {
 	contacts: ContactState[];
 	loading: boolean;
+	modal: boolean;
+	modalActive: ContactState;
 }
 
 const initialState: State = {
 	contacts: [],
-	loading: false
+	loading: false,
+	modal: false,
+	modalActive:{
+		name: '',
+		photo: '',
+		id: '',
+		tel: '',
+		email:'',
+	}
 }
 
 const ContactsSlice = createSlice({
 		name: 'contacts',
 		initialState,
-		reducers: {},
+		reducers: {
+			OpenModal: (state, {payload: contact}) => {
+				const find = state.contacts.findIndex(item => {
+					return item.id === contact
+				});
+				state.modalActive = state.contacts[find];
+				state.modal = true;
+			},
+			CloseModal: (state) => {
+				state.modal = false;
+			}
+		},
 		extraReducers: (builder) => {
 			builder.addCase(fetchContacts.pending, (state) => {
 				state.loading = true;
@@ -36,3 +57,4 @@ const ContactsSlice = createSlice({
 
 export const contactsReducer = ContactsSlice.reducer;
 export const selectContacts = (state: RootState) => state.contacts;
+export const {OpenModal, CloseModal} = ContactsSlice.actions;

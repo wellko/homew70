@@ -18,3 +18,17 @@ export const newContact = createAsyncThunk<void, Contact>(
 		await  AxiosApi.post('contacts.json', arg)
 	}
 )
+
+export const editContact = createAsyncThunk<void, ContactState>(
+	'contacts/edit',
+	async (arg) => {
+		await  AxiosApi.put('contacts/' + arg.id + '.json', arg)
+	}
+)
+
+export const deleteContact = createAsyncThunk<void, string>(
+	'contacts/delete',
+	async (id) =>{
+		await AxiosApi.delete('contacts/' + id + '.json')
+	}
+)

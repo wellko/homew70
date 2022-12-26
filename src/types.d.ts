@@ -4,3 +4,7 @@ export interface Contact {
 	email: string;
 	photo: string;
 }
+
+export interface ContactState extends Contact{
+	id: string;
+}

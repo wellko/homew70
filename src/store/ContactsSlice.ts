@@ -1,9 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "./store";
 import {fetchContacts} from "./ContactsThunks";
+import {ContactState} from "../types";
 
-const initialState = {
-	contacts: {},
+interface State {
+	contacts: ContactState[];
+	loading: boolean;
+}
+
+const initialState: State = {
+	contacts: [],
 	loading: false
 }
 

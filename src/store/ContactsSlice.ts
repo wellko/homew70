@@ -51,6 +51,7 @@ const ContactsSlice = createSlice({
             builder.addCase(fetchContacts.rejected, (state) => {
                 state.loading = false;
             });
+
             builder.addCase(deleteContact.pending, (state) => {
                 state.action = true;
             });
@@ -60,6 +61,7 @@ const ContactsSlice = createSlice({
             builder.addCase(deleteContact.rejected, (state) => {
                 state.action = false;
             });
+
             builder.addCase(newContact.pending, (state) => {
                 state.action = true;
             });
@@ -69,6 +71,7 @@ const ContactsSlice = createSlice({
             builder.addCase(newContact.rejected, (state) => {
                 state.action = false;
             })
+
             builder.addCase(editContact.pending, (state) => {
                 state.action = true;
             });

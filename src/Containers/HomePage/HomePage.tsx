@@ -9,8 +9,7 @@ const HomePage = () => {
 
     return (
         <div className='container'>
-            {Contacts.loading ? <Spinner/> : (Contacts.contacts.map(item => <Contact key={Math.random()}
-                                                                                     contacts={item}/>))}
+            {Contacts.loading ? <Spinner/> : (Contacts.contacts.map(item => <Contact key={Math.random()} contacts={item}/>))}
         </div>
     );
 };

@@ -3,9 +3,9 @@ import {contactsReducer} from "./ContactsSlice";
 
 
 export const store = configureStore({
-	reducer: {
-		contacts: contactsReducer,
-	}
+    reducer: {
+        contacts: contactsReducer,
+    }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
